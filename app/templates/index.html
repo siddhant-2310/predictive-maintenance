@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predictive Maintenance</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
+
+</head>
+<body>
+    <div class="container">
+        <h1>Predictive Maintenance Analysis</h1>
+        <form id="prediction-form">
+            <div class="form-group">
+                <label for="type">Machine Type:</label>
+                <input type="text" id="type" name="type" pattern="\d*\.?\d*" required>
+
+            </div>
+            <div class="form-group">
+                <label for="air_temp">Air Temperature (K):</label>
+                <input type="text" id="air_temp" name="air_temp" pattern="\d*\.?\d*" required>
+
+            </div>
+            <div class="form-group">
+                <label for="process_temp">Process Temperature (K):</label>
+                <input type="text" id="process_temp" name="process_temp" pattern="\d*\.?\d*" required>
+
+            </div>
+            <div class="form-group">
+                <label for="rotational_speed">Rotational Speed (rpm):</label>
+                <input type="text" id="rotational_speed" name="rotational_speed" pattern="\d*\.?\d*" required>
+
+            </div>
+            <div class="form-group">
+                <label for="torque">Torque (Nm):</label>
+                <input type="text" id="torque" name="torque" pattern="\d*\.?\d*" required>
+
+            </div>
+            <div class="form-group">
+                <label for="vibration">Vibration Levels:</label>
+                <input type="text" id="vibration" name="vibration" pattern="\d*\.?\d*" required>
+
+            </div>
+            <div class="form-group">
+                <label for="operational_hours">Operational Hours:</label>
+                <input type="text" id="operational_hours" name="operational_hours" pattern="\d*\.?\d*" required>
+
+            </div>
+            <button type="submit">Predict Maintenance</button>
+            <button type="button" id="random-values">Generate Random Values</button>
+        </form>
+    <div id="result" class="result-container"></div>
+
+    
+
+
+    </div>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script>
+        // Random value generator
+        document.getElementById('random-values').addEventListener('click', function() {
+            const randomData = {
+                type: Math.floor(Math.random() * 2),
+                air_temp: (295 + Math.random() * 15).toFixed(2),
+                process_temp: (305 + Math.random() * 10).toFixed(2),
+                rotational_speed: Math.floor(1000 + Math.random() * 2000),
+                torque: Math.floor(10 + Math.random() * 70),
+                vibration: Math.floor(1 + Math.random() * 9),
+                operational_hours: Math.floor(Math.random() * 10000)
+            };
+            
+            document.getElementById('type').value = randomData.type;
+            document.getElementById('air_temp').value = randomData.air_temp;
+            document.getElementById('process_temp').value = randomData.process_temp;
+            document.getElementById('rotational_speed').value = randomData.rotational_speed;
+            document.getElementById('torque').value = randomData.torque;
+            document.getElementById('vibration').value = randomData.vibration;
+            document.getElementById('operational_hours').value = randomData.operational_hours;
+        });
+    </script>
+
+
+
+</body>
+</html>
