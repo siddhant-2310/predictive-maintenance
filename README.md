@@ -14,7 +14,7 @@ This project predicts when industrial machines are likely to fail, allowing for 
     ```
 2. Train the model:
     ```bash
-    python main.py
+    python train.ipynb
     ```
 3. Run the Flask app:
     ```bash
